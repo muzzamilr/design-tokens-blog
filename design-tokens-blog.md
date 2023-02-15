@@ -1,8 +1,8 @@
 In this article, we will be discussing the Design Tokens and their Integration with the newly released version 5 of Ant Design.
 
-Design Tokens are generally all the values needed to construct and maintain a UI. Design tokens can include color, typography, spacing etc. For example if there is color green specificully used by Starbucks, their designers will tokenize the hex value of that color e.g starbucks_green. Now they can use this token in the whole UI design. In future if Starbucks want to change the shade of their color green or even completely replace the color green, designer can just change the value of color starbucks_green token and it will reflect to the whole UI design.
+Design Tokens are generally all the values needed to construct and maintain a UI. Design tokens can include color, typography, spacing, etc. For example, if there is the color green specifically used by Starbucks, their designers will tokenize the hex value of that color e.g, starbucks_green. Now they can use this token in the whole UI design. In the future, if Starbucks wants to change the shade of their color green or even completely replace the color green, a designer can just change the value of the color starbucks_green token and it will reflect in the whole UI design.
 
-Disclaimer: This hands-on guide is based on a paid product and requires beginner to intermediate skill set in Ant Design and React.
+Disclaimer: This hands-on guide is based on a paid product and requires a beginner to intermediate skill set in Ant Design and React.
 
 Ant Design v5 has shifted from less variables to token system. Now they have a ConfigProvider component which can be paired with design tokens for styling purpose. They have launced a new paid product named [Ant Design System for Figma](https://www.antforfigma.com/). This product will be mainly used for generating and exporting tokens from Figma and integrating those tokens with Ant Design.
 
@@ -11,7 +11,7 @@ Here's a list of the concepts that will be covered in this blog:
 - Transforming tokens into format required by Ant Design
 - Using transformed tokens in code.
 - Overriding the styles provided by tokens.
-- Understanding pros, cons and best practices to follow
+- Understanding the pros, cons, and best practices to follow
 
 You can find the complete code at https://github.com/muzzamilr/design-tokens-workshop
 
@@ -20,7 +20,7 @@ We will be using Vite for the React project setup, by using this command:
 ```sh
 npm create vite
 ```
-this command will prompt some options and you need to name the project, choose React as library and JavaScript as language. You can test if the project is setup is correct by running command:
+this command will prompt some options and you need to name the project, choose React as library and JavaScript as language. You can test if the project setup is correct by running command:
 ```sh
 npm start dev
 ```
@@ -36,7 +36,7 @@ npm install antd figma-tokens-transformer
 ```
 
 ## Figma Token Transformer Config
-Figma tokens transformer is a package which helps to transform the tokens exported from figma into the format specified by Ant Design.
+Figma tokens transformer is a package that helps to transform the tokens exported from figma into the format specified by Ant Design.
 ### tokens-transformer.config.json
 ```json
 {
@@ -49,10 +49,10 @@ Figma tokens transformer is a package which helps to transform the tokens export
   }
 }
 ```
-This file lives in the root of project and we need to specify the version of Ant Design we are using and the source of tokens file exported by figma and the target directory in which the transformed json files will be generated.
+This file lives in the root of the project and we need to specify the version of Ant Design we are using and the source of the tokens file exported by Figma and the target directory in which the transformed JSON files will be generated.
 
 ### tokens-transformer.secret.json
-This file will be created in the root of the project and it includes the licence key and email of Ant For Figma. 
+This file will be created in the root of the project and it includes the license key and email of Ant For Figma.
 
 ** Don't commit this file.
 ```json
@@ -68,7 +68,7 @@ After completing this step configuration for figma token transformer is complete
 ## GitHub Workflows
 Disclaimer: This step can be skipped because you can handle the tokens update manually.
 
-We need to create Github actions for automating the workflow, whenever the designer exports from figma to GitHub, these actions will transform and push the the new transformed tokens in the branch. Before all this make sure you setup git in your project using this command:
+We need to create Github actions for automating the workflow, whenever the designer exports from Figma to GitHub, these actions will transform and push the the new transformed tokens in the branch. Before all this make sure you setup git in your project using this command:
 ```sh
 git init
 ```
@@ -119,7 +119,7 @@ After creating these directories and adding tokens.json file in the src/tokens d
 
 Run:
 ```sh
-npx npx figma-tokens-transformer transform
+npx figma-tokens-transformer transform
 ```
 After running this command you can see the json files created in the target directory "ant-tokens"
 ```
@@ -264,7 +264,7 @@ export const ButtonMod = () => {
   );
 };
 ```
-In this code we have use ConfigProvider and passed false to the inherit property of theme prop. Now it will not inherit the theme and tokens from previous ConfigProvider, we can also style a specific compnents by providing the type of component in components property of theme.
+In this code we have use ConfigProvider and passed false to the inherit property of theme prop. Now it will not inherit the theme and tokens from the previous ConfigProvider, we can also style specific compnents by providing the type of component in "components" property of the theme.
 
 All tokens are overridable, for example if we are using black as primary color in the parent ConfigPovider, we can override it by wrapping in another ConfigProvider and passing values to it. If the inherit is true (true by default) then it will inherit all the previous properties and only override the provided properties in the child component.
 
@@ -284,9 +284,9 @@ In this code, we are just returning an Ant button component. As you remember we 
 Even if we try to call use useToken hook in this component, the token values provided by the hook will be the default values of Ant Design.
 
 ## Pros
-- Streamlined process by combining figma and github actions
-- We have a lot more control over the UI including Fonts, Font Sizes, Colors, Border Radius and much more
-- We can make our own custom variants of AntD components (inherit false and define self configuration)
+- A streamlined process by combining Figma and GitHub actions
+- We have a lot more control over the UI including Fonts, Font Sizes, Colors, Border Radius, and much more
+- We can make our own custom variants of AntD components (inherit false and define self-configuration)
 - We can use tokens directly in inline styles of a components
 - Visual consistency across products/apps
 - Creates unified language witin and between teams
