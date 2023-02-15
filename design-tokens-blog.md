@@ -306,3 +306,4 @@ Even if we try to call use useToken hook in this component, the token values pro
 - [Ant For Figma](https://ant.design/theme-editor)
 - [Figma Tokens Transformer](https://github.com/Jonarzz/figma-tokens-transformer)
 - [Tokens Studio for Figma](https://docs.tokens.studio/)
+- [Nielsen Norman Group - Design Systems 101](https://www.nngroup.com/articles/design-systems-101/)
