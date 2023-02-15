@@ -52,7 +52,9 @@ Figma tokens transformer is a package which helps to transform the tokens export
 This file lives in the root of project and we need to specify the version of Ant Design we are using and the source of tokens file exported by figma and the target directory in which the transformed json files will be generated.
 
 ### tokens-transformer.secret.json
-This file will be created in the root of the project and it includes the licence key and email of Ant For Figma. Don't commit this file.
+This file will be created in the root of the project and it includes the licence key and email of Ant For Figma. 
+
+** Don't commit this file.
 ```json
 {
   "license": {
@@ -65,6 +67,7 @@ After completing this step configuration for figma token transformer is complete
 
 ## GitHub Workflows
 Disclaimer: This step can be skipped because you can handle the tokens update manually.
+
 We need to create Github actions for automating the workflow, whenever the designer exports from figma to GitHub, these actions will transform and push the the new transformed tokens in the branch. Before all this make sure you setup git in your project using this command:
 ```sh
 git init
@@ -104,12 +107,16 @@ jobs:
           git push
 ```
 In this piece of code we are creating a job named tranform_tokens which runs on Ubuntu and sets up node v18. It installs the dependencies "npm ci" and then transformation command runs. After transformation it commits and pushes code to the branch.
+
 You will need to setup the secrects for this repository in the settings of that repository, for the secrets setup you can follow this guide https://docs.github.com/en/actions/security-guides/encrypted-secrets
 
 ## Tokens Directory Setup
 After setting up the GitHub actions, we need to create "tokens" directory in "src" directory and add the tokens.json file exported from the Figma Tokens Plugin.
+
 Create a new directory in "src" directory named "ant-tokens"
+
 After creating these directories and adding tokens.json file in the src/tokens directory we can run the transform command which will generate the light and dark json files in the target directory.
+
 Run:
 ```sh
 npx npx figma-tokens-transformer transform
@@ -215,9 +222,13 @@ const MsgSvg = ({ color }) => (
 export default App;
 ```
 In the App.jsx file we have used different components like Button, Select, Radio, Checkbox, Input, Switch, Calender and ConfigProvider for setting up the tokens.
+
 We are using Switch Component for switching between dark and light mode. We have imported dark and light json files.
+
 Wrapped the whole App component in the ConfigProvider and passed dark and light as tokens in the theme prop.
+
 There is also a MsgSvg component used in the Input component as Prefix to change the color of according to theme we are reading the value of colorPrimary from dark and light json files.
+
 ** Ant Design provides useToken hook for accessing all the tokens provided in the ConfigProvider. Here we are not using that hook because of Top to Bottom data flow of React that hook is not usable in this component but will be availaible in the child components e.g ButtonMod
 
 ### src/button.jsx
@@ -254,7 +265,9 @@ export const ButtonMod = () => {
 };
 ```
 In this code we have use ConfigProvider and passed false to the inherit property of theme prop. Now it will not inherit the theme and tokens from previous ConfigProvider, we can also style a specific compnents by providing the type of component in components property of theme.
+
 All tokens are overridable, for example if we are using black as primary color in the parent ConfigPovider, we can override it by wrapping in another ConfigProvider and passing values to it. If the inherit is true (true by default) then it will inherit all the previous properties and only override the provided properties in the child component.
+
 Here we are using useTokens hook and these token values are inherited from the parent ConfigProvider even if the child ConfigProvider inherit is false.
 We can also use tokens in in-line styles.
 
@@ -267,6 +280,7 @@ export const Child = () => {
 };
 ```
 In this code, we are just returning an Ant button component. As you remember we passed false to inherit in its parent component and no token are defined in its parent (ButtonMod) component. So, this component will have the default styles of Ant Design.
+
 Even if we try to call use useToken hook in this component, the token values provided by the hook will be the default values of Ant Design.
 
 ## Pros
