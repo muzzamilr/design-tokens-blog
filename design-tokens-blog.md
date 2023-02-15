@@ -288,6 +288,8 @@ Even if we try to call use useToken hook in this component, the token values pro
 - We have a lot more control over the UI including Fonts, Font Sizes, Colors, Border Radius and much more
 - We can make our own custom variants of AntD components (inherit false and define self configuration)
 - We can use tokens directly in inline styles of a components
+- Visual consistency across products/apps
+- Creates unified language witin and between teams
 
 ## Cons
 - Styling components of a custom library/package
