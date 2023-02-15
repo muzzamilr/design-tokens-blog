@@ -285,7 +285,7 @@ Even if we try to call use useToken hook in this component, the token values pro
 
 ## Additional Details
 
-You can also pass in an algorithm into the theme object in the config provider, these algorithms take seed token as a parameter and return map and alias tokens. Algorithms can used for in-app accessibility options such as increasing the font size by a specific variable.
+You can also pass an algorithm into the theme object in the config provider, these algorithms take a seed token as a parameter and return map and alias tokens. Algorithms can be used for in-app accessibility options such as increasing the font size by a specific variable.
 
 Here is an example of the above use case:
 
