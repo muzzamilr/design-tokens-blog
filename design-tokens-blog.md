@@ -283,6 +283,31 @@ In this code, we are just returning an Ant button component. As you remember we 
 
 Even if we try to call use useToken hook in this component, the token values provided by the hook will be the default values of Ant Design.
 
+## Additional Details
+
+You can also pass in an algorithm into the theme object in the config provider, these algorithms take seed token as a parameter and return map and alias tokens. Algorithms can used for in-app accessibility options such as increasing the font size by a specific variable.
+
+Here is an example of the above use case:
+
+```ts
+  const [fontSizeIncrement, setFontSizeIncrement] = useState(0);
+
+const increaseFontSize = (theme) => {
+      let MapTokens = theme;
+
+     const fontTokens =  Object.keys(MapTokens).filter(token => token.includes("font"))
+      
+     fontTokens.map(token => {MapTokens[token] = MapTokens[token] + fontSizeIncrement} )
+
+     return MapTokens
+  }
+   <ConfigProvider
+      theme={{
+        algorithm: increaseFontSize,
+        token: dark ? darkTheme : lightTheme,
+      }}>
+```
+
 ## Pros
 - A streamlined process by combining Figma and GitHub actions
 - We have a lot more control over the UI including Fonts, Font Sizes, Colors, Border Radius, and much more
