@@ -291,15 +291,12 @@ You can also pass an algorithm into the theme object in the config provider, the
 Here is an example of the above use case:
 
 ```ts
-  const [fontSizeIncrement, setFontSizeIncrement] = useState(0);
+const [fontSizeIncrement, setFontSizeIncrement] = useState(0);
 
 const increaseFontSize = (theme) => {
-      let MapTokens = theme;
-
-     const fontTokens =  Object.keys(MapTokens).filter(token => token.includes("font"))
-      
+     let MapTokens = theme;
+     const fontTokens =  Object.keys(MapTokens).filter(token => token.includes("font")) 
      fontTokens.map(token => {MapTokens[token] = MapTokens[token] + fontSizeIncrement} )
-
      return MapTokens
   }
    <ConfigProvider
