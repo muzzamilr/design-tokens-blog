@@ -308,13 +308,22 @@ const increaseFontSize = (theme) => {
       }}>
 ```
 
+## Migration from V4 to V5
+In V5 of Ant Design following adjustments are made,
+- Design Specifications (Change in primary color, change in border radiuses, etc.)
+- Technological adjustments (Removed less, updated date library, updated locale provider)
+- Compatibility (Internet Explorer is not supported anymore)
+- Component API adjustment (APIs of some components are changed)
+
+For a detailed guide, you can visit the migrations docs of [Ant Design V4 to V5](https://ant.design/docs/react/migration-v5)
+
 ## Pros
 - A streamlined process by combining Figma and GitHub actions
 - We have a lot more control over the UI including Fonts, Font Sizes, Colors, Border Radius, and much more
 - We can make our own custom variants of AntD components (inherit false and define self-configuration)
 - We can use tokens directly in inline styles of a components
 - Visual consistency across products/apps
-- Creates unified language witin and between teams
+- Creates unified language within and between teams
 
 ## Cons
 - Styling components of a custom library/package
@@ -322,12 +331,13 @@ const increaseFontSize = (theme) => {
 - Not able to control the sizes of different components e.g we cannot set the size of button
 
 ## Best Practices
-- Do not use global css! (it’s gonna hurt you later)
+- Do not use global CSS! (it’s gonna hurt you later)
 
 ## Resources
 - [Ant Design - Theme Customization](https://ant.design/docs/react/customize-theme)
 - [Ant Design - ConfigProvider](https://ant.design/components/config-provider)
 - [Ant Design - Theme Editor](https://ant.design/theme-editor)
+- [Ant Design - Migration from V4 to V5](https://ant.design/docs/react/migration-v5)
 - [Ant For Figma](https://ant.design/theme-editor)
 - [Figma Tokens Transformer](https://github.com/Jonarzz/figma-tokens-transformer)
 - [Tokens Studio for Figma](https://docs.tokens.studio/)
